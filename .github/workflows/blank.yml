@@ -70,11 +70,11 @@ jobs:
     
     - name: Build kernel
       run: |
-        ARCH=arm64 CROSS_COMPILE=aarch64-linux-gnu- CC=clang LD=ld.lld LLVM=1 LLVM_IAS=1 CCACHE_DIR=$HOME/.ccache make -j$(nproc) Image.gz dtbs modules
+        make ARCH=arm64 CC=clang -j$(nproc) Image.gz dtbs modules LLVM=1
     
     - name: Build device tree blobs
       run: |
-        ARCH=arm64 CROSS_COMPILE=aarch64-linux-gnu- CC=clang LD=ld.lld LLVM=1 LLVM_IAS=1 make dtbs
+        make ARCH=arm64 CC=clang dtbs
     
     - name: Package kernel artifacts
       run: |
