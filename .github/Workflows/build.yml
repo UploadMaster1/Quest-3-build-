@@ -40,8 +40,12 @@ jobs:
           git \
           wget \
           ccache \
+          clang \
+          llvm \
+          lld \
           gcc-aarch64-linux-gnu \
-          g++-aarch64-linux-gnu
+          g++-aarch64-linux-gnu \
+          binutils-aarch64-linux-gnu
     
     - name: Checkout Oculus Quest 3 Kernel
       uses: actions/checkout@v4
@@ -92,6 +96,7 @@ jobs:
         path: |
           kernel-quest3.tar.gz
           kernel-output/Image.gz
+          kernel-output/vmlinux
           kernel-output/*.dtb
         retention-days: 30
     
